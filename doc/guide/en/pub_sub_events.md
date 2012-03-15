@@ -103,7 +103,14 @@ ss.publish.transport.use('redis');  // any config can be passed to the second ar
 
 Using an external event transport has an important added benefit: Now you can easily push events to connected browser from external (non Node.js) systems. Simply connect the external system (e.g. an Erlang service) to the same instance of Redis and publish messages using the same JSON message format.
 
+For Redis all events go into a Pub/Sub Channel with the key "ss:event".
+Here is an example of the JSON Format of an event:
 
+``` javascript
+{"t": "user","users":["joe", "bob"],"e": "some_event_name","p":["first_param", {"put": "any_payload", "into": "the p key"}]}
+
+{"t": "channel","channels":["...
+```
 
 **Notes**
 
